@@ -45,15 +45,12 @@ A **list of dictionaries** is optimal for this application because:
 ## 3. Reflection Answers
 
 1. **Why does the order of if/elif conditions matter at grade boundaries?**  
-   Python evaluates `if/elif` chains sequentially from top to bottom and stops at the first condition that evaluates to `True`. Because our program checks lower bounds (e.g., `mark >= 80`, `mark >= 70`, `mark >= 60`), placing higher thresholds first ensures that a mark like `85` matches `mark >= 80` immediately. If the order were reversed and `mark >= 50` was evaluated first, a mark of `85` would satisfy `mark >= 50` and be incorrectly assigned a 'D' grade.
+  The order matters because Python checks conditions from top to bottom and executes the first condition. If the conditions are not arranged properly, a student may receive the wrong garde,
 
 2. **What error could arise when calculating the average of an empty list?**  
-   If no student records have been added, the total number of students is `0`. Attempting to divide the cumulative total marks by `0` (`total_marks / total_students`) results in a `ZeroDivisionError`, causing the program to crash. This is safely prevented by checking `if not students:` prior to computation.
+  A zeroDivisionError can occur because the program tries to divide by zero when there are no marks in the list.
 
 3. **How would you adapt the program to handle two courses per student?**  
-   To manage multiple courses, we could:
-   * Nest a dictionary within each student record to map course codes to marks (e.g., `"courses": {"ICT111": 78, "MAT111": 85}`).
-   * Update the input prompt to capture marks across both course identifiers.
-   * Expand the statistics module to report individual course averages alongside overall cumulative performance.
+I would store two course marks for each students, calculate the average for each course, and then determine the student's final grade.
 
 ---
